@@ -1,0 +1,9 @@
+README.md
+setup.py
+src/traccia_guard/__init__.py
+src/traccia_guard/rules.py
+src/traccia_guard/session.py
+src/traccia_guard.egg-info/PKG-INFO
+src/traccia_guard.egg-info/SOURCES.txt
+src/traccia_guard.egg-info/dependency_links.txt
+src/traccia_guard.egg-info/top_level.txt

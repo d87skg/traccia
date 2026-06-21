@@ -1,0 +1,24 @@
+Metadata-Version: 2.4
+Name: traccia-guard
+Version: 0.1.0
+Summary: AI Agent 安全气囊 — 拦截危险命令、Token异常、内网访问
+Author: Traccia Team
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Dynamic: author
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: requires-python
+Dynamic: summary
+
+# Traccia Guard
+
+给你的 AI Agent 装个安全带。
+
+## 安装
+
+```bash
+pip install traccia-guard
