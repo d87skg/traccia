@@ -1,0 +1,8 @@
+Metadata-Version: 2.4
+Name: traccia-eval
+Version: 0.1.0
+Summary: Traccia Agent Execution Benchmark — scoring and leaderboard
+Requires-Dist: datasets
+Requires-Dist: huggingface_hub
+Dynamic: requires-dist
+Dynamic: summary

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://traccia.dev/schemas/attribution.schema.json",
+  "title": "Attribution",
+  "description": "将行为与责任主体绑定。AES 接口预留。",
+  "type": "object",
+  "required": [
+    "attribution_id",
+    "session_id",
+    "executor"
+  ],
+  "properties": {
+    "attribution_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "session_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "executor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supervisor": {
+      "type": "string"
+    },
+    "approver": {
+      "type": "string"
+    },
+    "policy_id": {
+      "type": "string",
+      "description": "AES 策略 ID，预留字段"
+    }
+  },
+  "additionalProperties": false
+}

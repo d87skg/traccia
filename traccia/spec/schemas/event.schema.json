@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://traccia.dev/schemas/evidence.schema.json",
+  "title": "Evidence",
+  "description": "证明Event真实发生的材料。v1.1 新增 reference 类型支持外部存储。",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "event_id",
+    "type",
+    "sha256",
+    "storage_uri",
+    "created_at"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "event_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "file_hash",
+        "screenshot",
+        "api_response",
+        "log_snapshot",
+        "binary_blob",
+        "reference"
+      ]
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "storage_uri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

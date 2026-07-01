@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://traccia.dev/schemas/package.schema.json",
+  "title": "Package",
+  "description": "一个可独立验证的完整执行证明文件",
+  "type": "object",
+  "required": [
+    "manifest",
+    "session",
+    "events",
+    "evidence",
+    "signature"
+  ],
+  "properties": {
+    "manifest": {
+      "type": "object",
+      "required": ["traccia_version", "package_version", "created_at"],
+      "properties": {
+        "traccia_version": { "type": "string" },
+        "package_version": { "type": "string" },
+        "created_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "session": {
+      "$ref": "session.schema.json"
+    },
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "event.schema.json"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "evidence.schema.json"
+      }
+    },
+    "attribution": {
+      "$ref": "attribution.schema.json"
+    },
+    "signature": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,2 @@
+[console_scripts]
+traccia-eval = traccia_eval.cli:main

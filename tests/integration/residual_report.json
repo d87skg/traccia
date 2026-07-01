@@ -1,0 +1,140 @@
+{
+  "diversity_autogen.evidence": {
+    "temporal": {
+      "event_count": 9,
+      "duplicate_timestamps": 7,
+      "note": "Temporal clustering or duplicate timestamps may indicate batching/latency issues."
+    },
+    "semantic": {
+      "canonical_mismatches": 0,
+      "unknown_event_types": [],
+      "note": "Events without canonical mapping or with mismatches indicate semantic gaps."
+    },
+    "structural": {
+      "null_prev_hashes": 0,
+      "chain_breaks": 0,
+      "note": "Hash chain integrity issues indicate structural anomalies."
+    },
+    "recovery": {
+      "error_count": 3,
+      "recovery_attempts": 4,
+      "recovery_ratio": 1.3333333333333333,
+      "note": "Recovery gap indicates the system did not attempt to mitigate failures."
+    }
+  },
+  "diversity_claude_code.evidence": {
+    "temporal": {
+      "event_count": 10,
+      "duplicate_timestamps": 8,
+      "note": "Temporal clustering or duplicate timestamps may indicate batching/latency issues."
+    },
+    "semantic": {
+      "canonical_mismatches": 0,
+      "unknown_event_types": [],
+      "note": "Events without canonical mapping or with mismatches indicate semantic gaps."
+    },
+    "structural": {
+      "null_prev_hashes": 0,
+      "chain_breaks": 0,
+      "note": "Hash chain integrity issues indicate structural anomalies."
+    },
+    "recovery": {
+      "error_count": 3,
+      "recovery_attempts": 4,
+      "recovery_ratio": 1.3333333333333333,
+      "note": "Recovery gap indicates the system did not attempt to mitigate failures."
+    }
+  },
+  "diversity_crewai.evidence": {
+    "temporal": {
+      "event_count": 10,
+      "duplicate_timestamps": 9,
+      "note": "Temporal clustering or duplicate timestamps may indicate batching/latency issues."
+    },
+    "semantic": {
+      "canonical_mismatches": 0,
+      "unknown_event_types": [],
+      "note": "Events without canonical mapping or with mismatches indicate semantic gaps."
+    },
+    "structural": {
+      "null_prev_hashes": 0,
+      "chain_breaks": 0,
+      "note": "Hash chain integrity issues indicate structural anomalies."
+    },
+    "recovery": {
+      "error_count": 3,
+      "recovery_attempts": 4,
+      "recovery_ratio": 1.3333333333333333,
+      "note": "Recovery gap indicates the system did not attempt to mitigate failures."
+    }
+  },
+  "diversity_langchain.evidence": {
+    "temporal": {
+      "event_count": 10,
+      "duplicate_timestamps": 9,
+      "note": "Temporal clustering or duplicate timestamps may indicate batching/latency issues."
+    },
+    "semantic": {
+      "canonical_mismatches": 0,
+      "unknown_event_types": [],
+      "note": "Events without canonical mapping or with mismatches indicate semantic gaps."
+    },
+    "structural": {
+      "null_prev_hashes": 0,
+      "chain_breaks": 0,
+      "note": "Hash chain integrity issues indicate structural anomalies."
+    },
+    "recovery": {
+      "error_count": 3,
+      "recovery_attempts": 4,
+      "recovery_ratio": 1.3333333333333333,
+      "note": "Recovery gap indicates the system did not attempt to mitigate failures."
+    }
+  },
+  "diversity_openai.evidence": {
+    "temporal": {
+      "event_count": 9,
+      "duplicate_timestamps": 8,
+      "note": "Temporal clustering or duplicate timestamps may indicate batching/latency issues."
+    },
+    "semantic": {
+      "canonical_mismatches": 0,
+      "unknown_event_types": [],
+      "note": "Events without canonical mapping or with mismatches indicate semantic gaps."
+    },
+    "structural": {
+      "null_prev_hashes": 0,
+      "chain_breaks": 0,
+      "note": "Hash chain integrity issues indicate structural anomalies."
+    },
+    "recovery": {
+      "error_count": 3,
+      "recovery_attempts": 4,
+      "recovery_ratio": 1.3333333333333333,
+      "note": "Recovery gap indicates the system did not attempt to mitigate failures."
+    }
+  },
+  "diversity_openhands.evidence": {
+    "temporal": {
+      "event_count": 11,
+      "duplicate_timestamps": 10,
+      "note": "Temporal clustering or duplicate timestamps may indicate batching/latency issues."
+    },
+    "semantic": {
+      "canonical_mismatches": 0,
+      "unknown_event_types": [],
+      "note": "Events without canonical mapping or with mismatches indicate semantic gaps."
+    },
+    "structural": {
+      "null_prev_hashes": 0,
+      "chain_breaks": 0,
+      "note": "Hash chain integrity issues indicate structural anomalies."
+    },
+    "recovery": {
+      "error_count": 3,
+      "recovery_attempts": 4,
+      "recovery_ratio": 1.3333333333333333,
+      "note": "Recovery gap indicates the system did not attempt to mitigate failures."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/traccia-core",
+    "crates/traccia-event",
+    "crates/traccia-evidence",
+    "crates/traccia-package",
+    "crates/traccia-verify",
+    "crates/traccia-replay",
+    "crates/traccia-aes",
+    "apps/traccia-cli",
+]

@@ -1,0 +1,10 @@
+setup.py
+traccia_eval/__init__.py
+traccia_eval/cli.py
+traccia_eval/scorer.py
+traccia_eval.egg-info/PKG-INFO
+traccia_eval.egg-info/SOURCES.txt
+traccia_eval.egg-info/dependency_links.txt
+traccia_eval.egg-info/entry_points.txt
+traccia_eval.egg-info/requires.txt
+traccia_eval.egg-info/top_level.txt

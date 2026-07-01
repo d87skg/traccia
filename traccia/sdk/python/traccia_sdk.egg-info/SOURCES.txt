@@ -1,0 +1,16 @@
+setup.py
+traccia/__init__.py
+traccia/session.py
+traccia/reference/__init__.py
+traccia/reference/python/__init__.py
+traccia/reference/python/attribution.py
+traccia/reference/python/event.py
+traccia/reference/python/evidence.py
+traccia/reference/python/package.py
+traccia/reference/python/session.py
+traccia/reference/python/utils.py
+traccia/reference/python/validator.py
+traccia_sdk.egg-info/PKG-INFO
+traccia_sdk.egg-info/SOURCES.txt
+traccia_sdk.egg-info/dependency_links.txt
+traccia_sdk.egg-info/top_level.txt
