@@ -1,0 +1,11 @@
+# Permissive policy: audit only, no blocking
+rules:
+  - name: dangerous_shell
+    action: WARN
+    patterns: ["rm -rf", "sudo", "chmod 777"]
+  - name: token_spike
+    action: WARN
+    threshold: 200000
+  - name: internal_network
+    action: WARN
+    patterns: ["127.0.0.1", "192.168.", "10.", "172.16.", "localhost"]

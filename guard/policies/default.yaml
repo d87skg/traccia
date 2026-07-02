@@ -1,0 +1,11 @@
+# Default policy: block dangerous operations, warn on anomalies
+rules:
+  - name: dangerous_shell
+    action: BLOCK
+    patterns: ["rm -rf", "sudo", "chmod 777", "mkfs.", "dd if=", ":(){ :|:& };:"]
+  - name: token_spike
+    action: WARN
+    threshold: 100000
+  - name: internal_network
+    action: BLOCK
+    patterns: ["127.0.0.1", "192.168.", "10.", "172.16.", "localhost"]

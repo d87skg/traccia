@@ -1,0 +1,14 @@
+# Strict policy: block all external tool calls by default
+rules:
+  - name: dangerous_shell
+    action: BLOCK
+    patterns: ["rm -rf", "sudo", "chmod 777", "mkfs.", "dd if=", ":(){ :|:& };:", "curl", "wget", "ssh"]
+  - name: token_spike
+    action: BLOCK
+    threshold: 50000
+  - name: internal_network
+    action: BLOCK
+    patterns: ["127.0.0.1", "192.168.", "10.", "172.16.", "localhost", "0.0.0.0"]
+  - name: file_write
+    action: WARN
+    patterns: ["write_file", "file.write"]
