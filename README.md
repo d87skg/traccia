@@ -1,6 +1,6 @@
 # Traccia
 
-AI Agent 行为闭环控制与执行评测基础设施
+Traccia records your agent’s complete execution and tells you how well it performed. Traccia 记录 Agent 的完整执行过程，并告诉你它的质量如何。
 
 ## 安装
 
