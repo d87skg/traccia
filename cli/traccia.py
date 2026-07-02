@@ -44,6 +44,7 @@ def cmd_intercept(args):
     evidence_path = f"traccia-{session.session_id[:8]}.evidence"
     session.export(evidence_path)
     print(f"Evidence saved: {evidence_path}")
+    print(f"👉 Next: traccia diagnose {evidence_path}")
 
 def cmd_diagnose(args):
     """诊断模式：分析证据包"""

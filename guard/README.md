@@ -1,8 +1,23 @@
-# Traccia Guard
+# Traccia Guard — Security Policy Gateway for AI Agents
 
-给你的 AI Agent 装个安全带。
+Traccia Guard sits between your agent and its tools, enforcing a security policy. Stop agents from deleting databases, accessing internal networks, or exceeding token budgets—before it happens.
 
-## 安装
+## Install
 
 ```bash
 pip install traccia-guard
+```
+
+## Quick Start
+
+```bash
+traccia guard --auto -- python my_agent.py
+```
+
+## Built-in Policies
+- `default`: blocks dangerous shell commands, internal network access, and token spikes
+- `strict`: blocks all external tool calls by default, explicit allowlist only
+- `permissive`: warns but does not block (audit mode)
+
+## License
+Apache 2.0
