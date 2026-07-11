@@ -1,153 +1,88 @@
-Traccia Architecture
-AI Execution Truth Architecture
-An open protocol for verifiable AI execution.
+# OpenBase Architecture
 
-Version: 1.0
-Status: Frozen (Architecture boundaries are stable; Protocol may evolve within the defined layers)
+OpenBase is a protocol, not a framework. This document defines what belongs where — and why.
 
-1. Architecture Overview
-Traccia is not a monolithic tool. It is a layered architecture with clear separation of concerns. Every component belongs to exactly one of six domains.
+---
 
-text
-                    ┌──────────────────────────────┐
-                    │        AI Application          │
-                    └──────────────┬─────────────────┘
-                                   │
-                    ┌──────────────▼─────────────────┐
-                    │        Agent Runtime            │
-                    │  (OpenClaw, LangGraph, CrewAI)  │
-                    └──────────────┬─────────────────┘
-                                   │
-        ┌──────────────────────────┼──────────────────────────┐
-        │                          │                          │
-        ▼                          ▼                          ▼
-┌───────────────┐       ┌──────────────────┐       ┌──────────────────┐
-│    Emitter    │       │   Middleware      │       │    Recorder       │
-│               │       │                   │       │                    │
-│ • LangChain   │──────▶│ • Guard           │──────▶│ • Event Builder    │
-│ • OpenClaw    │       │ • Validator       │       │ • Evidence Builder │
-│ • CLI         │       │ • Replay          │       │ • HashChain        │
-└───────────────┘       └──────────────────┘       └────────┬─────────┘
-                                                             │
-                                              ┌──────────────▼──────────────┐
-                                              │          Protocol            │
-                                              │                              │
-                                              │ • Session / Event / Evidence │
-                                              │ • Attribution / Package      │
-                                              │ • .evidence JSON Schema      │
-                                              └──────────────┬──────────────┘
-                                                             │
-                                      ┌──────────────────────┼──────────────────────┐
-                                      │                      │                      │
-                                      ▼                      ▼                      ▼
-                              ┌──────────────┐       ┌──────────────┐       ┌──────────────┐
-                              │   Registry    │       │     Eval      │       │  Consumers    │
-                              │               │       │               │       │               │
-                              │ • evidence:// │       │ • Scorer      │       │ • Viewer      │
-                              │ • Discovery   │       │ • Benchmark   │       │ • Auditor     │
-                              └──────────────┘       └──────────────┘       └──────────────┘
-The architecture is strictly layered. Components never skip a layer or import upward.
+## Core Protocol (Immutable)
 
-2. Layer Definitions
-Each layer has exactly one responsibility and a strictly defined interface.
+The OpenBase Protocol defines the minimum interoperable layer for AI agent execution evidence.
 
-2.1 Protocol Layer
-Responsibility: Define how facts are expressed.
-Artifacts: JSON Schema (.evidence), HashChain specification, Attribution model.
-Stability: This layer is the most stable. Changes are additive only (e.g., adding new optional fields).
-Dependencies: None. It is the root of the dependency graph.
-Consumers: Every other layer reads or writes Protocol objects.
+| Component | Purpose | Status |
+|-----------|---------|--------|
+| **OBS** | OpenBase Schema — canonical event vocabulary | Stable |
+| **Evidence** | Structured, verifiable execution trace (`.evidence`) | Stable |
+| **Replay** | Convert Evidence to human-readable timeline | Stable |
+| **Conformance** | Certification engine — verify agent claims | Stable |
 
-2.2 Recorder Layer
-Responsibility: Translate runtime events into Protocol objects.
-Key Interface:
+**Rule:** No new component enters Core without a 12-month stabilization period in Extensions first.
 
-python
-class Recorder(ABC):
-    @abstractmethod
-    def observe_llm(self, prompt: str, response: str, metadata: dict): ...
-    @abstractmethod
-    def observe_tool(self, tool_name: str, input: dict, output: dict, metadata: dict): ...
-    @abstractmethod
-    def observe_error(self, error: Exception, context: dict): ...
-    # ... other observation methods
-Rule: All Emitter implementations MUST write to a Recorder. No Emitter may construct Protocol objects directly.
+---
 
-2.3 Emitter Layer
-Responsibility: Connect a specific Agent framework runtime to the Recorder.
-Examples: LangChainEmitter, CrewAIEmitter, CLIEmitter.
-Rule: An Emitter is a thin adapter. It Monkey-patches or hooks framework internals, captures execution events, and forwards them to the Recorder interface. It must contain zero domain logic.
+## SDK Layer: Traccia
 
-2.4 Middleware Layer
-Responsibility: Intercept, filter, or augment the event stream.
-Key Interface:
+Traccia is the official developer SDK for OpenBase. It translates agent execution into OpenBase Evidence.
 
-python
-class Middleware(ABC):
-    @abstractmethod
-    def process(self, event: Event) -> Tuple[Event, Action]:
-        # Action: PASS, BLOCK, WARN, MODIFY
-        ...
-Examples: Guard (block dangerous commands), Validator (check HashChain), Replay (record timeline).
-Rule: Middleware are composable. They can be chained: Guard -> Validator -> Recorder.
+| Component | Purpose | Status |
+|-----------|---------|--------|
+| `traccia intercept` | Auto-generate Evidence from any Python agent | Active |
+| `traccia diagnose` | Analyze Evidence and output root cause report | Active |
+| `traccia guard` | Security policy gateway between agent and tools | Active |
+| Session | Agent lifecycle boundary | SDK layer |
+| Attribution Chain | Actor responsibility tracking | SDK layer |
+| Evidence Package | Bundled execution trace (ZIP) | SDK layer |
+| Renderer | Convert Evidence to Markdown/JSON/Text | SDK layer |
 
-2.5 Registry Layer
-Responsibility: Enable discovery, sharing, and permanent referencing of Evidence Packages.
-Key Concept: Every package receives a unique, resolvable URI (e.g., evidence://<hash>).
-Status: Deferred. Will be activated once there are real sharing needs in the ecosystem.
+**One-sentence definition:** Traccia adds verifiable execution, replay, and evidence to any AI agent in minutes.
 
-2.6 Eval Layer
-Responsibility: Consume .evidence files and produce evaluation metrics.
-Key Concept: Metrics are computed on execution graphs, not just final outputs.
-Examples: traccia-eval scorer, analyzer.
-Rule: Eval is a consumer only. It never influences the Protocol or Recorder.
+---
 
-3. Data Flow (Standard Path)
-Agent Runtime executes a task (e.g., LangChain Agent).
+## Reference Runtime: OpenClaw
 
-An Emitter hooks the runtime and forwards raw events to the Recorder.
+OpenClaw is a reference agent runtime that produces OpenBase Evidence natively.
 
-(Optionally) Middleware intercepts events (e.g., Guard blocks a dangerous command).
+---
 
-The Recorder translates events into Protocol objects (Session, Event, Evidence).
+## Enterprise Extensions
 
-The Recorder builds the HashChain and exports an .evidence package.
+| Extension | Purpose | Status |
+|-----------|---------|--------|
+| **Guard** | Security policy enforcement | Active |
+| **Audit** | Enterprise compliance reporting | Planned |
+| **Risk** | Agent risk scoring | Planned |
+| **Compliance** | Regulatory framework mapping | Planned |
+| **Governance** | Multi-party approval workflows | Planned |
 
-The package can be registered in the Registry (future).
+---
 
-The package can be consumed by Eval tools or Viewers (Replay).
+## Experimental Extensions
 
-4. Design Principles
-4.1 Freeze Architecture, Not Protocol
-The six-layer architecture is frozen. Protocol versions (.evidence v1.x) may evolve, but they stay within the Protocol layer.
+| Extension | Purpose | Status |
+|-----------|---------|--------|
+| **Residual Engine** | 4D execution quality scoring | Experimental |
+| **Entropy Injection** | Controlled adversarial testing | Experimental |
+| **Loop** | Closed-loop feedback training | Experimental |
+| **Registry** | Global evidence discovery | Experimental (local-only) |
+| **Rust Core** | High-performance runtime | Experimental (traccia-rs/) |
 
-4.2 Concept Control
-Before adding any new module, ask: Which layer does it belong to? If the answer is not clear, the module is not ready.
+These are preserved for future activation when ecosystem scale demands them.
 
-4.3 Inevitability over Persuasiveness
-We don't ask frameworks to "support" Traccia. We make .evidence generation an unavoidable byproduct of execution. The Emitter/Recorder model achieves this via Monkey-patching and wrapper injection.
+---
 
-4.4 Composition over Configuration
-Middleware and Emitters are designed to be composed. Adding a new safety check should not require modifying the core.
+## Archived Concepts
 
-4.5 Zero-Config by Default
-The goal for any Emitter is to work out of the box. pip install traccia-langchain should be enough.
+| Concept | Why Archived |
+|---------|-------------|
+| **AES** | Absorbed into Attribution Chain |
+| **AEF** | Absorbed into Evidence Package |
+| **Aegis** | Renamed to OpenBase |
 
-5. Code Map (Current to Target)
-Current Implementation	Target Layer	Status
-traccia/reference/python/	Recorder	Needs refactoring to extract Recorder interface.
-guard/	Middleware (Guard)	Needs to implement Middleware interface.
-cli/traccia.py	Emitter (CLI Wrapper)	Correct. Will remain as a generic Emitter.
-(New) emitters/langchain/	Emitter (LangChain)	Highest priority new component.
-analyzer/	Eval	Move to Eval layer.
-registry/	Registry	Deferred.
-6. Roadmap (6-Month Horizon)
-Q1: Stabilize Recorder interface. Release traccia-langchain Emitter. Activate community feedback loop.
+---
 
-Q2: Refactor Guard into Middleware. Release traccia-crewai Emitter. Begin OpenClaw native integration.
+## Design Principles
 
-Q3: Launch traccia-eval benchmark and Leaderboard. Publish HuggingFace dataset.
-
-Q4: Evaluate Registry activation based on ecosystem adoption. Open protocol spec for external RFCs.
-
-"We do not build a tool. We define the truth layer for AI execution."
+1. **Core is minimal.** Only what is required for interoperability.
+2. **SDK is the entry point.** Nobody should need to read the protocol to get started.
+3. **Extensions prove themselves before entering Core.** 12-month stabilization minimum.
+4. **One protocol, many SDKs.** Traccia is Python; future SDKs may be Rust, TypeScript, Go.
+5. **Freeze early, evolve slowly.** Core changes are additive only.
