@@ -1,21 +1,23 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="traccia",
-    version="0.2.0",
-    description="AI Agent 行为闭环控制 CLI",
-    packages=find_packages(where="src/traccia") + find_packages(where="."),
+    name="traccia-sdk",
+    version="0.2.1",
+    description="Official OpenBase Developer SDK — add verifiable execution, replay, and evidence to any AI agent",
+    long_description=open("README.md", encoding="utf-8").read(),
+    long_description_content_type="text/markdown",
+    author="OpenBase Project",
+    url="https://github.com/d87skg/traccia",
+    # 只包含 src/traccia 下的包
+    packages=find_packages(where="src/traccia"),
     package_dir={"": "src/traccia"},
-    py_modules=["cli.traccia"],
-    install_requires=[
-        "requests",
-    ],
-    entry_points={
-        "console_scripts": [
-            "traccia=cli.traccia:main",
-        ],
-    },
+    # cli 作为独立脚本模块
+    scripts=["cli/traccia.py"],
+    install_requires=["requests"],
     classifiers=[
         "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: Apache Software License",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
     ],
+    python_requires=">=3.10",
 )
