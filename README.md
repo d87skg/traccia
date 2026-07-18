@@ -1,41 +1,42 @@
-# OpenBase + Traccia
+﻿# Traccia — OpenBase Developer SDK
 
-**OpenBase** is the protocol for AI agent execution evidence.  
-**Traccia** is the official developer SDK — add verifiable execution, replay, and evidence to any AI agent in minutes.
+Add verifiable execution to your AI agent in 5 lines.
 
-## 安装
+## Install
 
-```bash
-pip install traccia traccia-guard traccia-eval
-快速开始
+`ash
+pip install traccia-sdk
+Quick Start
+python
+from traccia import observe
+
+@observe
+def my_agent():
+    return agent.run()
 bash
 traccia intercept -- python your_agent.py
 traccia diagnose traccia-*.evidence
-三个核心命令
-命令	功能
-traccia intercept	拦截 Agent 执行，自动生成证据包
-traccia diagnose	分析证据包，输出诊断报告
-traccia guard	安全策略网关，阻止危险操作
-Guard 规则
-规则	检测	动作
-dangerous_shell	rm -rf, sudo, chmod 777, mkfs, dd, fork bomb	BLOCK
-token_spike	单次 > 100K tokens	WARN
-internal_network	127.0.0.1, 192.168.x.x, 10.x.x.x, 172.16.x.x, localhost	BLOCK
-项目结构
+Three Core Commands
+CommandPurpose
+traccia interceptAuto-generate OpenBase Evidence from any Python agent
+traccia diagnoseAnalyze Evidence and output root cause report
+traccia guardSecurity policy gateway between agent and tools
+Framework Emitters
+LangChain · CrewAI · AutoGen · OpenAI SDK · Claude Code · OpenHands · LangGraph
+
+Relationship to OpenBase
 text
-traccia/
-├── cli/               ← CLI 入口
-├── src/traccia/       ← 核心库
-├── guard/             ← 安全策略网关
-├── eval/              ← 评分与排行榜工具
-├── dataset/           ← 基准数据集
-├── tools/             ← 辅助工具
-├── ARCHITECTURE.md    ← 架构定义
-└── README.md
-论文与数据集
-论文: https://github.com/d87skg/traccia/releases/tag/v1.0.0
+OpenBase = Protocol (what gets recorded)
+Traccia  = SDK      (how you record it)
+OpenClaw = Reference Runtime
+Links
+OpenBase Protocol: https://github.com/d87skg/OpenBase
 
-数据集: https://huggingface.co/datasets/vasdvae/traccia-benchmark
+PyPI: https://pypi.org/project/traccia-sdk/
 
-许可证
+Paper: https://github.com/d87skg/traccia/releases/tag/v1.0.0
+
+Dataset: https://huggingface.co/datasets/vasdvae/traccia-benchmark
+
+License
 Apache 2.0
