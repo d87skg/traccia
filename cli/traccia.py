@@ -137,7 +137,8 @@ def main():
         print("traccia diagnose <file.evidence>     Find root cause of failures")
         print("traccia certify <file.evidence>      Get OpenBase Certified badge")
         print("traccia guard -- <command>           Block dangerous actions")
-        print("")`n    print("Advanced: traccia loop run [--iterations N]")
+        print("")
+        print("Advanced: traccia loop run [--iterations N]")
         sys.exit(1)
     command = sys.argv[1]
     args = sys.argv[2:]
