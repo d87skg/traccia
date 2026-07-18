@@ -1,4 +1,4 @@
-﻿# Traccia Experimental Modules
+﻿# Traccia labs Modules
 
 These modules are maintained for research and future use but are NOT part of the core SDK.
 
