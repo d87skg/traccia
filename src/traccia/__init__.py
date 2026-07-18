@@ -1,1 +1,1 @@
-from .sdk import ResidualLoop
+﻿from .openbase_adapter import OpenBaseAdapter
