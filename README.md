@@ -1,10 +1,9 @@
-﻿# Traccia — OpenBase Developer SDK
+﻿# Traccia — Give your AI Agent a flight recorder.
 
-Add verifiable execution to your AI agent in 5 lines.
+Record every action. Replay every decision. Prove every execution. **In 5 minutes.**
 
 ## Install
-
-`ash
+```bash
 pip install traccia-sdk
 Quick Start
 python
@@ -12,31 +11,34 @@ from traccia import observe
 
 @observe
 def my_agent():
-    return agent.run()
+    return "hello"
+
+my_agent()
 bash
-traccia intercept -- python your_agent.py
-traccia diagnose traccia-*.evidence
-Three Core Commands
-CommandPurpose
-traccia interceptAuto-generate OpenBase Evidence from any Python agent
-traccia diagnoseAnalyze Evidence and output root cause report
-traccia guardSecurity policy gateway between agent and tools
-Framework Emitters
+traccia verify traccia-*.evidence
+# → Valid OpenBase Evidence ✓
+Commands
+Command    What it does
+traccia intercept    Record any agent's execution
+traccia verify    Check evidence integrity
+traccia diagnose    Find root cause of failures
+traccia certify    Get OpenBase Certified badge
+traccia guard    Block dangerous actions
+Framework Support
 LangChain · CrewAI · AutoGen · OpenAI SDK · Claude Code · OpenHands · LangGraph
 
-Relationship to OpenBase
+OpenBase Protocol
+Traccia is the official SDK for OpenBase — the open trust protocol for AI agents.
+
 text
 OpenBase = Protocol (what gets recorded)
 Traccia  = SDK      (how you record it)
-OpenClaw = Reference Runtime
 Links
-OpenBase Protocol: https://github.com/d87skg/OpenBase
+OpenBase: https://github.com/d87skg/OpenBase
 
 PyPI: https://pypi.org/project/traccia-sdk/
 
 Paper: https://github.com/d87skg/traccia/releases/tag/v1.0.0
-
-Dataset: https://huggingface.co/datasets/vasdvae/traccia-benchmark
 
 License
 Apache 2.0

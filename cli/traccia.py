@@ -132,12 +132,12 @@ def cmd_loop(args):
 
 def main():
     if len(sys.argv) < 2:
-        print("traccia intercept -- <command>")
-        print("traccia diagnose <file.evidence>")
-        print("traccia verify <file.evidence>")
-        print("traccia certify <file.evidence>")
-        print("traccia guard -- <command>")
-        print("traccia loop run [--iterations N]")
+        print("traccia intercept -- <command>      Record agent execution")
+        print("traccia verify <file.evidence>       Check evidence integrity")
+        print("traccia diagnose <file.evidence>     Find root cause of failures")
+        print("traccia certify <file.evidence>      Get OpenBase Certified badge")
+        print("traccia guard -- <command>           Block dangerous actions")
+        print("")`n    print("Advanced: traccia loop run [--iterations N]")
         sys.exit(1)
     command = sys.argv[1]
     args = sys.argv[2:]
@@ -155,3 +155,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
