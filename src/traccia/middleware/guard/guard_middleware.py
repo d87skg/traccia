@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Any, Dict, Tuple
 
 # 使用原始 Guard 规则
-_guard_path = Path('D:/Traccia/guard/src/traccia_guard')
+_guard_path = Path(__file__).parent.parent.parent.parent.parent / 'guard' / 'src' / 'traccia_guard'
 if str(_guard_path) not in sys.path:
     sys.path.insert(0, str(_guard_path))
 

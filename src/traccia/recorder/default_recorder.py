@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional
 
 # 确保 reference 包在路径中
-_reference_path = Path('D:/Traccia/traccia/reference')
+_reference_path = Path(__file__).parent.parent.parent.parent / 'traccia' / 'reference'
 if str(_reference_path) not in sys.path:
     sys.path.insert(0, str(_reference_path))
 
@@ -16,7 +16,7 @@ from .recorder import Recorder
 from .mapper import CanonicalMapper, SimplePassThroughMapper
 
 # 引入熵注入器
-_entropy_path = Path('D:/Traccia/src/traccia')
+# _entropy_path moved to labs/
 if str(_entropy_path) not in sys.path:
     sys.path.insert(0, str(_entropy_path))
 # entropy moved to labs
