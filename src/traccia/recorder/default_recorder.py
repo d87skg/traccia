@@ -16,9 +16,6 @@ from .recorder import Recorder
 from .mapper import CanonicalMapper, SimplePassThroughMapper
 
 # 引入熵注入器
-# _entropy_path moved to labs/
-if str(_entropy_path) not in sys.path:
-    sys.path.insert(0, str(_entropy_path))
 # entropy moved to labs
 
 class DefaultRecorder(Recorder):
