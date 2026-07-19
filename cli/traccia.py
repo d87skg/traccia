@@ -131,6 +131,8 @@ def cmd_loop(args):
     run_loop(iterations=iterations)
 
 def main():
+    if "--help" in sys.argv or "-h" in sys.argv:
+        sys.argv = [sys.argv[0]]
     if len(sys.argv) < 2:
         print("traccia intercept -- <command>      Record agent execution")
         print("traccia verify <file.evidence>       Check evidence integrity")
@@ -140,6 +142,11 @@ def main():
         print("")
         print("Advanced: traccia loop run [--iterations N]")
         sys.exit(1)
+    if len(sys.argv) > 1 and sys.argv[1] in ("--help", "-h"):
+        sys.argv = [sys.argv[0]]
+        
+    if len(sys.argv) < 2:
+        sys.argv = [sys.argv[0]]
     command = sys.argv[1]
     args = sys.argv[2:]
     if command == "intercept":

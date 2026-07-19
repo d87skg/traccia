@@ -19,18 +19,18 @@ from .mapper import CanonicalMapper, SimplePassThroughMapper
 _entropy_path = Path('D:/Traccia/src/traccia')
 if str(_entropy_path) not in sys.path:
     sys.path.insert(0, str(_entropy_path))
-from entropy.injectors import EntropyInjector
+# entropy moved to labs
 
 class DefaultRecorder(Recorder):
     def __init__(self, objective: str = "Default Session", 
                  mapper: Optional[CanonicalMapper] = None,
-                 entropy_injector: Optional[EntropyInjector] = None):
+                 entropy_injector=None):
         self._session = Session(objective=objective)
         self._events = []
         self._evidences = []
         self._finished = False
         self._mapper = mapper or SimplePassThroughMapper()
-        self._entropy_injector = entropy_injector or EntropyInjector()
+        self._entropy_injector = entropy_injector
 
     def observe_llm(self, prompt: str, response: str, metadata: Optional[Dict[str, Any]] = None) -> str:
         payload = {"prompt": prompt, "response": response}
