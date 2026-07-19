@@ -1,1 +1,1 @@
-﻿from .openbase_adapter import OpenBaseAdapter
+﻿# Traccia SDK Core
