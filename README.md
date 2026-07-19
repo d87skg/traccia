@@ -1,22 +1,15 @@
-﻿# Traccia — Give your AI Agent a flight recorder.
+﻿# Traccia — the flight recorder for AI agents
 
-Record every action. Replay every decision. Prove every execution. **In 5 minutes.**
+Debug, replay, and verify any agent failure in minutes.
 
 ## Install
 ```bash
 pip install traccia-sdk
 Quick Start
-python
-from traccia import observe
-
-@observe
-def my_agent():
-    return "hello"
-
-my_agent()
 bash
+traccia intercept -- python your_agent.py
 traccia verify traccia-*.evidence
-# → Valid OpenBase Evidence ✓
+traccia diagnose traccia-*.evidence
 Commands
 Command    What it does
 traccia intercept    Record any agent's execution
@@ -27,14 +20,8 @@ traccia guard    Block dangerous actions
 Framework Support
 LangChain · CrewAI · AutoGen · OpenAI SDK · Claude Code · OpenHands · LangGraph
 
-OpenBase Protocol
-Traccia is the official SDK for OpenBase — the open trust protocol for AI agents.
-
-text
-OpenBase = Protocol (what gets recorded)
-Traccia  = SDK      (how you record it)
 Links
-OpenBase: https://github.com/d87skg/OpenBase
+GitHub: https://github.com/d87skg/traccia
 
 PyPI: https://pypi.org/project/traccia-sdk/
 
