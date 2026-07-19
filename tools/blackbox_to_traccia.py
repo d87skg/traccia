@@ -2,7 +2,7 @@
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "traccia" / "sdk" / "python"))
-from traccia import start
+from traccia_sdk import start
 
 def load_events(path):
     events = []
@@ -53,7 +53,7 @@ def convert(events_jsonl, evidence_zip, output):
     session.finish()
     path = session.export(output)
 
-    from traccia.reference.python.validator import verify
+    from traccia_sdk.reference.python.validator import verify
     result = verify(path)
     print(f"Session: {session.session_id[:12]}...")
     print(f"Events:  {len(events)}")

@@ -14,7 +14,7 @@ def cmd_intercept(args):
         sys.exit(1)
     cmd_str = " ".join(args)
     print(f"Traccia intercepting: {cmd_str}")
-    from traccia import start
+    from traccia_sdk import start
     session = start(objective=f"intercept: {cmd_str}")
     session.record("process.start", payload={"command": args})
     try:

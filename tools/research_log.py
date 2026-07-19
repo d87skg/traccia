@@ -14,7 +14,7 @@ from pathlib import Path
 
 # 引入 SDK
 sys.path.insert(0, str(Path(__file__).parent.parent / "traccia" / "sdk" / "python"))
-from traccia import start
+from traccia_sdk import start
 
 def main():
     if len(sys.argv) < 2:
@@ -61,7 +61,7 @@ def main():
     print(f"Research Package: {output}")
     print(f"Session: {session.session_id[:12]}...")
     print(f"Verify: ", end="")
-    from traccia.reference.python.validator import verify
+    from traccia_sdk.reference.python.validator import verify
     result = verify(str(output))
     print(result.status)
     if not result.is_valid:

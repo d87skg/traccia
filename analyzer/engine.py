@@ -3,7 +3,7 @@ from pathlib import Path
 from .classifier import extract_errors_from_package
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "traccia" / "sdk" / "python"))
-from traccia.reference.python.validator import verify
+from traccia_sdk.reference.python.validator import verify
 
 class DiagnosisEngine:
     def analyze(self, package_path: str):

@@ -3,7 +3,7 @@ from pathlib import Path
 from datetime import datetime, timezone
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "traccia" / "sdk" / "python"))
-from traccia.reference.python.validator import verify
+from traccia_sdk.reference.python.validator import verify
 
 REGISTRY_DIR = Path("D:/Traccia/registry")
 REGISTRY_FILE = REGISTRY_DIR / "entries.jsonl"
