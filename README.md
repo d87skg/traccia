@@ -35,3 +35,9 @@ Apache 2.0
 Found a bug? Have a feature idea? [Open an issue](https://github.com/d87skg/traccia/issues/new/choose).
 
 Just want to share your experience? [Start a discussion](https://github.com/d87skg/traccia/discussions).
+
+## Feedback
+
+Found a bug? Have a feature idea? [Open an issue](https://github.com/d87skg/traccia/issues/new/choose).
+
+Just want to share your experience? [Start a discussion](https://github.com/d87skg/traccia/discussions).
