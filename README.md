@@ -29,3 +29,9 @@ Paper: https://github.com/d87skg/traccia/releases/tag/v1.0.0
 
 License
 Apache 2.0
+
+## Feedback
+
+Found a bug? Have a feature idea? [Open an issue](https://github.com/d87skg/traccia/issues/new/choose).
+
+Just want to share your experience? [Start a discussion](https://github.com/d87skg/traccia/discussions).
