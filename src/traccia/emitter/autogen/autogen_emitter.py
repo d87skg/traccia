@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Optional, Dict, Any
 import functools
 
-_src_path = Path('D:/Traccia/src/traccia')
+_src_path = Path(__file__).parent.parent.parent
 if str(_src_path) not in sys.path:
     sys.path.insert(0, str(_src_path))
 
