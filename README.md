@@ -11,7 +11,7 @@ Think of it as a **crash dump + flight recorder + audit receipt** for autonomous
 ```bash
 pip install traccia-sdk
 Quick Start
-bash
+```bash
 traccia intercept -- python your_agent.py
 traccia verify traccia-*.evidence
 traccia diagnose traccia-*.evidence
@@ -28,7 +28,7 @@ LangChain · CrewAI · AutoGen · OpenAI SDK · Claude Code · OpenHands · Lang
 OpenBase Protocol
 Traccia is the official SDK for OpenBase — the open trust protocol for AI agents.
 
-text
+```
 OpenBase = Protocol (what gets recorded)
 Traccia  = SDK      (how you record it)
 Links
