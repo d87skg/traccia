@@ -1,6 +1,11 @@
-﻿# Traccia — the crash dump for AI agents
+> ⚠️ **This is NOT the observability platform at [traccia.ai](https://traccia.ai).**  
+> Traccia SDK is the **Execution Evidence Layer** for AI agents — making autonomous agent behavior provable, reproducible, and auditable.
 
-Debug, replay, and reproduce any agent failure. Like HAR files for the browser, but for autonomous agents.
+---
+
+# Traccia — Execution Evidence for AI Agents
+
+Think of it as a **crash dump + flight recorder + audit receipt** for autonomous agents.
 
 ## Install
 ```bash
@@ -8,20 +13,24 @@ pip install traccia-sdk
 Quick Start
 bash
 traccia intercept -- python your_agent.py
-traccia export failure.evidence
-traccia replay failure.evidence
-traccia diagnose failure.evidence
+traccia verify traccia-*.evidence
+traccia diagnose traccia-*.evidence
 Commands
-CommandWhat it does
-traccia interceptCapture agent execution
-traccia exportExport crash dump (.evidence bundle)
-traccia replayReproduce the failure
-traccia diagnoseFind root cause
-traccia verifyCheck evidence integrity
-traccia certifyGet OpenBase Certified badge
+Command	What it does
+traccia intercept	Record any agent's execution
+traccia verify	Check evidence integrity
+traccia diagnose	Find root cause of failures
+traccia certify	Get OpenBase Certified badge
+traccia guard	Block dangerous actions
 Framework Support
 LangChain · CrewAI · AutoGen · OpenAI SDK · Claude Code · OpenHands · LangGraph
 
+OpenBase Protocol
+Traccia is the official SDK for OpenBase — the open trust protocol for AI agents.
+
+text
+OpenBase = Protocol (what gets recorded)
+Traccia  = SDK      (how you record it)
 Links
 GitHub: https://github.com/d87skg/traccia
 
