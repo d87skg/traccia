@@ -40,3 +40,9 @@ Paper: https://github.com/d87skg/traccia/releases/tag/v1.0.0
 
 License
 Apache 2.0
+
+## Roadmap
+
+- **Now**: Crash dump + flight recorder + audit receipt for AI agents
+- **Next**: OpenBase OTEL Bridge (enterprise observability integration)
+- **Future**: Quantum-ready execution evidence (obs-quantum extension)
