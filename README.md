@@ -1,5 +1,5 @@
-> ⚠️ **This is NOT the observability platform at [traccia.ai](https://traccia.ai).**
-> Traccia is the **black box recorder for AI agents** — capture, replay, and debug any agent failure in 5 lines of code.
+> ⚠️ **This is NOT the observability platform at [traccia.ai](https://traccia.ai).**  
+> Traccia is the **black box recorder for AI agents** — capture, replay, and debug any agent failure in 5 lines of code.  
 > Built on the [OpenBase Protocol](https://github.com/d87skg/OpenBase).
 
 ---
@@ -8,12 +8,15 @@
 
 Capture, replay, and debug autonomous AI agents in 5 lines of code.
 
+## Install
 ```bash
 pip install traccia-sdk
-bash
+
+Quick Start
 traccia intercept -- python your_agent.py
 traccia verify traccia-*.evidence
 traccia diagnose traccia-*.evidence
+
 What It Does
 Command	What It Does
 traccia intercept	Record any agent's execution — every tool call, every LLM request
@@ -43,7 +46,7 @@ Future: Quantum-ready execution evidence
 Built on OpenBase
 Traccia is the official SDK for OpenBase — the open trust protocol for AI agents.
 
-text
+
 Traccia  = SDK      (how you record it)
 OpenBase = Protocol (what gets recorded)
 Links
