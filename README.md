@@ -1,60 +1,40 @@
-> ⚠️ **This is NOT the observability platform at [traccia.ai](https://traccia.ai).**  
-> Traccia is the **black box recorder for AI agents** — capture, replay, and debug any agent failure in 5 lines of code.  
-> Built on the [OpenBase Protocol](https://github.com/d87skg/OpenBase).
+> ⚠️ **This is NOT the observability platform at traccia.ai.**  
+> Traccia is a **flight recorder for AI agents** — find out why your agent failed, in 60 seconds.
 
 ---
 
-# Traccia — The Black Box Recorder for AI Agents
+# Agent crashed? Find out why in 60 seconds.
 
-Capture, replay, and debug autonomous AI agents in 5 lines of code.
-
-## Install
 ```bash
 pip install traccia-sdk
-
-Quick Start
 traccia intercept -- python your_agent.py
-traccia verify traccia-*.evidence
-traccia diagnose traccia-*.evidence
+traccia replay traccia-*.evidence
+Before	After
+"Agent failed, no idea why"	Replay the exact failure timeline
+"Claude Code deleted the wrong file"	See every tool call that led to it
+"Cursor called the wrong tool"	Trace the exact prompt and response
+"AutoGen infinite loop"	Pinpoint the retry that caused it
+Works With Your Stack
+LangChain · LangGraph · CrewAI · AutoGen · OpenAI SDK · Claude Code · OpenHands
 
-What It Does
-Command	What It Does
-traccia intercept	Record any agent's execution — every tool call, every LLM request
-traccia verify	Check evidence integrity — hash-chain verified
-traccia diagnose	Find root cause of failures — "Why did my agent crash?"
-traccia certify	Get OpenBase Certified badge for your README
-traccia guard	Block dangerous actions before they happen
-Supported Frameworks
-LangChain · CrewAI · AutoGen · OpenAI SDK · Claude Code · OpenHands · LangGraph
+One Command, Full Trace
+text
+$ traccia intercept -- python agent.py
+Agent failed at step 17: Tool 'delete_file' called with /src
 
-Why Traccia?
-Crash dump for agents — Like a core dump, but for AI. Every failure becomes reproducible.
+$ traccia replay failure.evidence
+┌──────────┬─────────────┬──────────┐
+│ Step 12  │ llm.call    │ "I should clean up unused files"  │
+│ Step 17  │ tool.call   │ delete_file("/src") ← ROOT CAUSE │
+└──────────┴─────────────┴──────────┘
+Real Cases
+Claude Code deleted wrong files → Replay showed prompt contamination at step 12
 
-Flight recorder — Replay the exact execution timeline. See every decision.
+Cursor called wrong tool → Trace revealed schema mismatch in tool definition
 
-Audit receipt — Hash-chain verified evidence. Prove what your agent did.
+AutoGen infinite loop → Timeline exposed missing retry limit at step 5
 
-5 lines of code — No config, no dashboard, no API key. Just pip install.
+Open Source
+Apache 2.0. No API keys. No dashboard. No telemetry.
 
-Roadmap
-Now: Black box recorder — capture, replay, diagnose
-
-Next: OpenBase OTEL Bridge — enterprise observability integration
-
-Future: Quantum-ready execution evidence
-
-Built on OpenBase
-Traccia is the official SDK for OpenBase — the open trust protocol for AI agents.
-
-
-Traccia  = SDK      (how you record it)
-OpenBase = Protocol (what gets recorded)
-Links
-GitHub: https://github.com/d87skg/traccia
-
-PyPI: https://pypi.org/project/traccia-sdk/
-
-Paper: https://github.com/d87skg/traccia/releases/tag/v1.0.0
-
-License
-Apache 2.0
+https://github.com/d87skg/traccia
