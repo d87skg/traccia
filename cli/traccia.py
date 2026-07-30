@@ -136,7 +136,7 @@ def main():
     if len(sys.argv) < 2:
         print("traccia intercept -- <command>      Record agent execution")
         print("traccia verify <file.evidence>       Check evidence integrity")
-    print("traccia replay <file.evidence>       Replay execution timeline")
+        print("traccia replay <file.evidence>       Replay execution timeline")
         print("traccia diagnose <file.evidence>     Find root cause of failures")
         print("traccia certify <file.evidence>      Get OpenBase Certified badge")
         print("traccia guard -- <command>           Block dangerous actions")
