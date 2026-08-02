@@ -1,9 +1,12 @@
 > ⚠️ **This is NOT the observability platform at traccia.ai.**  
-> Traccia is a **flight recorder for AI agents** — find out why your agent failed, in 60 seconds.
+> Traccia is the **compression and verification layer for autonomous agent execution.**  
+> Built on the [OpenBase Protocol](https://github.com/d87skg/OpenBase).
 
 ---
 
-# Agent crashed? Find out why in 60 seconds.
+# Traccia — Verifiable Execution Summary for AI Agents
+
+Turn millions of agent events into a 5KB verifiable proof. Trust through verification, not promises.
 
 ```bash
 pip install traccia-sdk
