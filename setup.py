@@ -2,8 +2,8 @@ from setuptools import setup, find_packages
 
 setup(
     name="traccia-sdk",
-    version="0.3.2",
-    description="Official OpenBase Developer SDK - add verifiable execution, replay, and evidence to any AI agent",
+    version="0.4.0",
+    description="Compression and verification layer for autonomous agent execution",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     author="OpenBase Project",
