@@ -1,8 +1,3 @@
-> ⚠️ **This is NOT the observability platform at [traccia.ai](https://traccia.ai).**  
-> Traccia is the **compression and verification layer for autonomous agent execution.**  
-> Built on the [OpenBase Protocol](https://github.com/d87skg/OpenBase).
-
----
 # Traccia
 
 > **Debug AI Agent crashes in 5 minutes, not 5 hours.**
@@ -137,6 +132,8 @@ bibtex
   year={2025},
   url={https://github.com/d87skg/traccia}
 }
+⚠️ Not affiliated with traccia.ai. Traccia is an open-source execution evidence layer built on the OpenBase Protocol.
 License
 Apache 2.0. No API keys. No dashboard. No telemetry.
-
+Traccia is part of the OpenBase ecosystem.
+OpenBase Protocol · Traccia SDK · Benchmark Dataset
